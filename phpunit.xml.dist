@@ -2,14 +2,14 @@
 
 <phpunit bootstrap="./test/bootstrap.php" colors="true">
     <testsuites>
-        <testsuite name="Growl PHP SDK">
-            <directory suffix="Test.php">./test/Growl/</directory>
+        <testsuite name="Growler test suite">
+            <directory suffix="Test.php">./test/Growler/</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory suffix=".php">./src/Growl/</directory>
+            <directory suffix=".php">./src/Growler/</directory>
         </whitelist>
     </filter>
 </phpunit>

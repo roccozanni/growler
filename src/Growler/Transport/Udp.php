@@ -1,8 +1,8 @@
 <?php
 
-namespace Growl\Transport;
+namespace Growler\Transport;
 
-class Udp implements \Growl\Transport
+class Udp implements \Growler\Transport
 {
     private $_connection;
 
@@ -39,7 +39,7 @@ class Udp implements \Growl\Transport
 
     /**
      * @param   string              $application    The application name
-     * @param   Growl\Notification  $notification  The notification to send
+     * @param   Growler\Notification  $notification  The notification to send
      */
     public function send($application, $notification)
     {

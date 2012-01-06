@@ -1,0 +1,21 @@
+{
+    "name": "growler/growler",
+    "description": "Growl binding for PHP",
+    "keywords": ["growl", "notifications", "gntp"],
+    "homepage": "http://github.com/roccozanni/growler",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rocco Zanni",
+            "email": "rocco.zanni@gmail.com",
+            "homepage": "http://www.roccozanni.net"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "autoload": {
+        "psr-0": {"Growler": "src/"}
+    }
+}

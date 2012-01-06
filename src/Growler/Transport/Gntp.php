@@ -1,8 +1,8 @@
 <?php
 
-namespace Growl\Transport;
+namespace Growler\Transport;
 
-class Gntp implements \Growl\Transport
+class Gntp implements \Growler\Transport
 {
     /**
      * @param   string  $application    The application name
@@ -15,7 +15,7 @@ class Gntp implements \Growl\Transport
     
     /**
      * @param   string              $application    The application name
-     * @param   Growl\notification  $notification  The notification to send
+     * @param   Growler\notification  $notification  The notification to send
      */
     public function send($application, $notification)
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Growl;
+namespace Growler;
 
 class ClassLoader
 {
@@ -38,7 +38,7 @@ class ClassLoader
             return true;
         }
 
-        if (0 === strpos($class, 'Growl\\')) {
+        if (0 === strpos($class, 'Growler\\')) {
             set_error_handler(array($this, 'handleIncludeError'));
             $exists = include $this->path.'/'.str_replace('\\', '/', $class).'.php';
             restore_error_handler();

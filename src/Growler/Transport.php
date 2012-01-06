@@ -1,6 +1,6 @@
 <?php
 
-namespace Growl;
+namespace Growler;
 
 interface Transport
 {
@@ -12,7 +12,7 @@ interface Transport
 
     /**
      * @param   string              $application    The application name
-     * @param   Growl\notification  $notification  The notification to send
+     * @param   Growler\notification  $notification  The notification to send
      */
     public function send($application, $notification);
 }

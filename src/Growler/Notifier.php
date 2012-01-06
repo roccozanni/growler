@@ -1,6 +1,6 @@
 <?php
 
-namespace Growl;
+namespace Growler;
 
 class Notifier
 {
@@ -13,7 +13,7 @@ class Notifier
      * Instance the notifier.
      *
      * @param   string              $application    The application name
-     * @param   Growl\Transport     $transport      The transport used to send notifications
+     * @param   Growler\Transport     $transport      The transport used to send notifications
      */
     public function __construct($application, $transport)
     {
@@ -26,9 +26,9 @@ class Notifier
     /**
      * Register a new notification. All notifications needs to be registered before use.
      *
-     * @param   Growl\NotificationType   $notification  The notification type to register
+     * @param   Growler\NotificationType   $notification  The notification type to register
      */
-    public function registerNotification(\Growl\NotificationType $notification)
+    public function registerNotification(\Growler\NotificationType $notification)
     {
         $this->_notifications[] = $notification;
     }
@@ -36,9 +36,9 @@ class Notifier
     /**
      * Send a notification
      *
-     * @param   Growl\Notification   $notification  The notification to register
+     * @param   Growler\Notification   $notification  The notification to register
      */
-    public function sendNotification(\Growl\Notification $notification)
+    public function sendNotification(\Growler\Notification $notification)
     {
         // Lazy registration
         if (!$this->_registered)

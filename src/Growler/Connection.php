@@ -1,6 +1,6 @@
 <?php
 
-namespace Growl;
+namespace Growler;
 
 class Connection
 {

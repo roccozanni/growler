@@ -1,12 +1,12 @@
 <?php
 
-namespace Growl;
+namespace Growler;
 
 class NotifierTest extends \PHPUnit_Framework_TestCase
 {
     public function testRegisterOnTransportIsNeverInvokedIfNoNotificationSent()
     {
-        $transport = $this->getMock('\Growl\Transport');
+        $transport = $this->getMock('\Growler\Transport');
         $transport->expects($this->never())
                   ->method('register');
 
@@ -22,7 +22,7 @@ class NotifierTest extends \PHPUnit_Framework_TestCase
         $n1   = new Notification($type, "Title1", "Message1");
         $n2   = new Notification($type, "Title2", "Message2");
 
-        $transport = $this->getMock('\Growl\Transport');
+        $transport = $this->getMock('\Growler\Transport');
         $transport->expects($this->once())
                   ->method('register')
                   ->with($application, array($type));
@@ -41,7 +41,7 @@ class NotifierTest extends \PHPUnit_Framework_TestCase
         $n1   = new Notification($type, "Title1", "Message1");
         $n2   = new Notification($type, "Title2", "Message2");
 
-        $transport = $this->getMock('\Growl\Transport');
+        $transport = $this->getMock('\Growler\Transport');
 
         $transport->expects($this->exactly(2))
                   ->method('send');
