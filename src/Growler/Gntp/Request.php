@@ -28,7 +28,7 @@ abstract class Request
 
         $message .= $this->_getBody();
 
-        $message .= "\r\n\r\n";
+        $message .= "\r\n";
 
         return $message;
     }
