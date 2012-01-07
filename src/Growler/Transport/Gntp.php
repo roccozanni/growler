@@ -4,13 +4,28 @@ namespace Growler\Transport;
 
 class Gntp implements \Growler\Transport
 {
+    private $_connection;
+
+    public function __construct($connection, $password = '')
+    {
+        $this->_connection = $connection;
+        $this->_password   = $password;
+    }
+    
     /**
      * @param   string  $application    The application name
      * @param   array   $notifications  The array of notifications to register
      */
     public function register($application, $notifications)
     {
-        throw new Exception("Not implemented yet");
+        $message = new \Growler\Gntp\Request\Register($application);
+        foreach ($notifications as $notification) {
+            $message->addNotificationType($notification);
+        }
+
+        $this->_connection->send($message->__toString());
+        $this->_connection->consume();
+        $this->_connection->disconnect();
     }
     
     /**
@@ -19,6 +34,9 @@ class Gntp implements \Growler\Transport
      */
     public function send($application, $notification)
     {
-        throw new Exception("Not implemented yet");
+        $message = new \Growler\Gntp\Request\Notify($application, $notification);
+        $this->_connection->send($message->__toString());
+        $this->_connection->consume();
+        $this->_connection->disconnect();
     }
 }

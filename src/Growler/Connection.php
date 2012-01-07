@@ -21,11 +21,29 @@ class Connection
 
     public function connect()
     { 
+        if ($this->_handle) { 
+            return;
+        }
+        
         $this->_handle = fsockopen($this->_protocol . '://' . $this->_host, $this->_port);
 
         if (!$this->_handle) {
             throw new Exception("Unable to open connetion");
         }
+    }
+
+    public function consume()
+    {
+        if (!$this->_handle) {
+            throw new Exception("Unable to read data: not connected");
+        }
+
+        $message = "";
+        while (!feof($this->_handle)) {
+            $message .= @fgets($this->_handle);
+        }
+        
+        return $message;
     }
 
     public function send($message)
@@ -54,5 +72,6 @@ class Connection
     public function disconnect()
     {
         fclose($this->_handle);
+        $this->_handle = null;
     }
 }
