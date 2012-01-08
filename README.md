@@ -44,11 +44,10 @@ From Growl 1.3 has been introduced the new TCP-based GNTP protocol.
 
 GNTP is a protocol to allow two-way communication between applications and centralized notification systems such as Growl for Mac OS X and to allow two-way communication between two machines running centralized notification systems for notification forwarding purposes.
 
-A the moment, the GNTP procol support is very basic and only a subset of the features are currently implemented.
+The GNTP procol implementation is NOT feature-complete, although all basic features are currently implemented.
 
 Missing:
 
-- Notification icons, the icon is supported only at Application level
 - Encryption and password
 - Subscribing and callbacks
 
