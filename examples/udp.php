@@ -1,7 +1,6 @@
 <?php
 
-// If you already have a PSR-0 compliant autoloader, this is not needed.
-// Simply register the Growler namespace to the "src" directory
+// Register class loader
 require_once __DIR__.'/../src/Growler/ClassLoader.php';
 Growler\ClassLoader::register();
 
@@ -15,6 +14,6 @@ $notifier    = new Growler\Notifier($application, $transport);
 $type1      = new Growler\NotificationType("TYPE1");
 $notifier->registerNotification($type1);
 
-// Send notification
+// Send notifications
 $notifier->sendNotification(new Growler\Notification($type1, "Notification title", "Notification message"));
 $notifier->sendNotification(new Growler\Notification($type1, "Notification title2", "Notification message2"));

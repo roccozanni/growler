@@ -6,6 +6,9 @@ class Register extends \Growler\Gntp\Request
 {
     private $_notifications;
 
+    /**
+     * @param Growl\Application     $application    The sender application
+     */
     public function __construct($application)
     {
         parent::__construct("REGISTER");

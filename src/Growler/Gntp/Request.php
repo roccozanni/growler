@@ -8,8 +8,9 @@ abstract class Request
     private $_headers;
     private $_binaries;
 
-    private static $_CHECK_URL_REGEXP = '/^https?:\/\/.*/';
-
+    /**
+     * @param string    $method    Request method
+     */
     public function __construct($method)
     {
         $this->_method    = $method;
@@ -17,6 +18,10 @@ abstract class Request
         $this->_binaries = array();
     }
 
+    /**
+     * @param string    $name    Header name
+     * @param string    $value   Header value
+     */
     public function setHeader($name, $value)
     {
         $this->_headers[$name] = mb_convert_encoding($value, 'UTF-8', 'auto');
