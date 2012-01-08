@@ -10,6 +10,9 @@ class File extends \Growler\Gntp\Resource
     private $_hash;
     private $_size;
 
+    /**
+     * @param   string  $path   The filepath
+     */
     public function __construct($path) 
     {
         $this->_path   = $path;

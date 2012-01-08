@@ -6,10 +6,12 @@ class Gntp implements \Growler\Transport
 {
     private $_connection;
 
-    public function __construct($connection, $password = '')
+    /**
+     * @param   Growler\Connection  $connection     The remote connection
+     */
+    public function __construct($connection)
     {
         $this->_connection = $connection;
-        $this->_password   = $password;
     }
     
     /**
@@ -29,7 +31,7 @@ class Gntp implements \Growler\Transport
     }
     
     /**
-     * @param   string              $application    The application name
+     * @param   string                $application    The application name
      * @param   Growler\notification  $notification  The notification to send
      */
     public function send($application, $notification)

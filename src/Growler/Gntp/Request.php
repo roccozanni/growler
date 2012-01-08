@@ -16,6 +16,9 @@ abstract class Request
         $this->_method    = $method;
         $this->_headers   = array();
         $this->_binaries = array();
+
+        // Add default headers
+        $this->setHeader("X-Sender", "Growler - PHP Growl notification library");
     }
 
     /**

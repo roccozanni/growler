@@ -4,7 +4,7 @@ namespace Growler\Gntp\Request;
 
 class NotifyTest extends \PHPUnit_Framework_TestCase
 {
-    public function testNotifyRequestSerialization()
+    public function testNotifyRequestWithNoIcon()
     {
         $application = new \Growler\Application("Test application");
 
@@ -17,6 +17,7 @@ class NotifyTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             "GNTP/1.0 NOTIFY NONE\r\n" .
+            "X-Sender: Growler - PHP Growl notification library\r\n" .
             "Application-Name: " .   $application->getName() ."\r\n" .
             "Notification-Name: " .  $n->getType()->getName() ."\r\n" .
             "Notification-Title: " . $n->getTitle() ."\r\n" .
@@ -38,6 +39,7 @@ class NotifyTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             "GNTP/1.0 NOTIFY NONE\r\n" .
+            "X-Sender: Growler - PHP Growl notification library\r\n" .
             "Application-Name: " .   $application->getName() ."\r\n" .
             "Notification-Name: " .  $n->getType()->getName() ."\r\n" .
             "Notification-Title: " . $n->getTitle() ."\r\n" .
@@ -61,6 +63,7 @@ class NotifyTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             "GNTP/1.0 NOTIFY NONE\r\n" .
+            "X-Sender: Growler - PHP Growl notification library\r\n" .
             "Application-Name: " .   $application->getName() ."\r\n" .
             "Notification-Name: " .  $n->getType()->getName() ."\r\n" .
             "Notification-Title: " . $n->getTitle() ."\r\n" .

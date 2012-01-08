@@ -24,9 +24,9 @@ class Notify extends \Growler\Gntp\Request
 
         $resource = null;
         if ($notification->getIcon()) {
-            $resource = \Growler\Gntp\Resource::build($notification->getIcon());
+            $resource = \Growler\Gntp\Resource::fromIdentifier($notification->getIcon());
         } else if ($notification->getType()->getIcon()) {
-            $resource = \Growler\Gntp\Resource::build($notification->getType()->getIcon());
+            $resource = \Growler\Gntp\Resource::fromIdentifier($notification->getType()->getIcon());
         }
 
         if ($resource && $resource->isValid())

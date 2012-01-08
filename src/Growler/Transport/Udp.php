@@ -6,6 +6,10 @@ class Udp implements \Growler\Transport
 {
     private $_connection;
 
+    /**
+     * @param   Growler\Connection  $connection     The remote connection
+     * @param   string              $password       The remote password
+     */
     public function __construct($connection, $password = '')
     {
         $this->_connection = $connection;

@@ -17,7 +17,7 @@ class Register extends \Growler\Gntp\Request
         // Handle application icon
         if ($application->getIcon())
         {
-            $resource = \Growler\Gntp\Resource::build($application->getIcon());
+            $resource = \Growler\Gntp\Resource::fromIdentifier($application->getIcon());
             if ($resource->isValid())
             {
                 $this->setHeader("Application-Icon", $resource->getUniqueId());

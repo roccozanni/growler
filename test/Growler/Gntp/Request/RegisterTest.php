@@ -11,6 +11,7 @@ class RegisterTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             "GNTP/1.0 REGISTER NONE\r\n" .
+            "X-Sender: Growler - PHP Growl notification library\r\n" .
             "Application-Name: " . $application->getName() ."\r\n" .
             "Notifications-Count: 0\r\n".
             "\r\n", 
@@ -27,6 +28,7 @@ class RegisterTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             "GNTP/1.0 REGISTER NONE\r\n" .
+            "X-Sender: Growler - PHP Growl notification library\r\n" .
             "Application-Name: " . $application->getName() ."\r\n" .
             "Notifications-Count: 1\r\n" .
             "\r\n" .
@@ -48,6 +50,7 @@ class RegisterTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             "GNTP/1.0 REGISTER NONE\r\n" .
+            "X-Sender: Growler - PHP Growl notification library\r\n" .
             "Application-Name: " . $application->getName() ."\r\n" .
             "Notifications-Count: 2\r\n" .
             "\r\n" .
@@ -70,6 +73,7 @@ class RegisterTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             "GNTP/1.0 REGISTER NONE\r\n" .
+            "X-Sender: Growler - PHP Growl notification library\r\n" .
             "Application-Name: " . $application->getName() ."\r\n" .
             "Application-Icon: http://foo\r\n" .
             "Notifications-Count: 1\r\n" .

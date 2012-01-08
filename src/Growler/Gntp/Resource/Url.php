@@ -4,9 +4,11 @@ namespace Growler\Gntp\Resource;
 
 class Url extends \Growler\Gntp\Resource
 {
-
     private $_url;
 
+    /**
+     * @param   string  $url   The url
+     */
     public function __construct($url) 
     {
         $this->_url = $url;
