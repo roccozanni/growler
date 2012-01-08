@@ -6,11 +6,15 @@ abstract class Request
 {
     private $_method;
     private $_headers;
+    private $_binaries;
+
+    private static $_CHECK_URL_REGEXP = '/^https?:\/\/.*/';
 
     public function __construct($method)
     {
-        $this->_method  = $method;
-        $this->_headers = array();
+        $this->_method    = $method;
+        $this->_headers   = array();
+        $this->_binaries = array();
     }
 
     public function setHeader($name, $value)
@@ -22,11 +26,21 @@ abstract class Request
     {
         $message = "GNTP/1.0 " . $this->_method . " NONE\r\n";
 
+        // Headers
         foreach ($this->_headers as $name => $value) {
             $message .= $name . ": " . $value ."\r\n";
         }
 
+        // Body
         $message .= $this->_getBody();
+
+        // Binaries
+        foreach ($this->_binaries as $id => $resource) {
+            $message .= "\r\n";
+            $message .= "Identifier: " . $id . "\r\n";
+            $message .= "Length: " . $resource->getBinarySize() . "\r\n\r\n";
+            $message .= $resource->getBinaryData() . "\r\n";
+        }
 
         $message .= "\r\n";
 
@@ -36,5 +50,14 @@ abstract class Request
     protected function _getBody()
     { 
         return "";
+    }
+
+    protected function _addResource($resource)
+    {
+        if (!$resource->hasBinary()) {
+            return;
+        }
+
+        $this->_binaries[$resource->getBinaryId()] = $resource;
     }
 }

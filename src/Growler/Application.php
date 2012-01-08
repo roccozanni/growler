@@ -2,11 +2,11 @@
 
 namespace Growler;
 
-class NotificationType
+class Application
 {
     private $_name;
     private $_icon;
-    
+
     public function __construct($name, $icon = null)
     {
         $this->_name = mb_convert_encoding($name, 'UTF-8', 'auto');

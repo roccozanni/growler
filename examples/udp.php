@@ -6,9 +6,10 @@ require_once __DIR__.'/../src/Growler/ClassLoader.php';
 Growler\ClassLoader::register();
 
 // Create components
-$connection = new Growler\Connection("udp", "localhost", 9887);
-$transport  = new Growler\Transport\Udp($connection);
-$notifier   = new Growler\Notifier("Test application", $transport);
+$application = new Growler\Application("Test application");
+$connection  = new Growler\Connection("udp", "localhost", 9887);
+$transport   = new Growler\Transport\Udp($connection);
+$notifier    = new Growler\Notifier($application, $transport);
 
 // Register notification types
 $type1      = new Growler\NotificationType("TYPE1");

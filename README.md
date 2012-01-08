@@ -26,7 +26,7 @@ A the moment, the GNTP procol support is very basic and only a subset of the fea
 
 Missing:
 
-- Custom icons
+- Notification icons, the icon is supported only at Application level
 - Encryption and password
 - Subscribing and callbacks
 

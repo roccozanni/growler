@@ -18,8 +18,6 @@ class Udp implements \Growler\Transport
      */
     public function register($application, $notifications)
     {
-        $application = mb_convert_encoding($application, 'UTF-8', 'auto');
-
         $data = '';
         $defaults = '';
         foreach ($notifications as $i => $notification)
@@ -29,9 +27,9 @@ class Udp implements \Growler\Transport
         }
 
         // pack(Protocol version, type, app name, number of notifications to register)
-        $data = pack('c2nc2', 1, 0, strlen($application), count($notifications),
+        $data = pack('c2nc2', 1, 0, strlen($application->getName()), count($notifications),
                     count($notifications)) .
-                $application . 
+                $application->getName() . 
                 $data . 
                 $defaults;
         $this->_sendMessage($data);
@@ -46,11 +44,11 @@ class Udp implements \Growler\Transport
         // pack(protocol version, type, priority/sticky flags, notification name length, title length, message length. app name length)
         $data = pack('c2n5', 1, 1, 0, strlen($notification->getType()->getName()), 
                     strlen($notification->getTitle()), strlen($notification->getMessage()), 
-                    strlen($application)) .
+                    strlen($application->getName())) .
                 $notification->getType()->getName() .
                 $notification->getTitle() .
                 $notification->getMessage() .
-                $application;
+                $application->getName();
         $this->_sendMessage($data);
     }
 

@@ -6,17 +6,18 @@ class NotifierTest extends \PHPUnit_Framework_TestCase
 {
     public function testRegisterOnTransportIsNeverInvokedIfNoNotificationSent()
     {
-        $transport = $this->getMock('\Growler\Transport');
+        $application = new Application("Test application");
+        $transport   = $this->getMock('\Growler\Transport');
         $transport->expects($this->never())
                   ->method('register');
 
-        $n = new Notifier("Test application", $transport);
+        $n = new Notifier($application, $transport);
         $n->registerNotification(new NotificationType("TEST1"));
     }
 
     public function testRegisterOnTransportIsInvokedOneTimeWhenAtLeastOneNotificationIsSent()
     {
-        $application = "Test application";
+        $application = new Application("Test application");
 
         $type = new NotificationType("TEST1");
         $n1   = new Notification($type, "Title1", "Message1");
@@ -35,7 +36,7 @@ class NotifierTest extends \PHPUnit_Framework_TestCase
 
     public function testUseTransportToSendMessage()
     {
-        $application = "Test application";
+        $application = new Application("Test application");
 
         $type = new NotificationType("TEST1");
         $n1   = new Notification($type, "Title1", "Message1");
