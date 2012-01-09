@@ -7,15 +7,20 @@ abstract class Request
     private $_method;
     private $_headers;
     private $_binaries;
+    private $_password;
+
+    private static $_KEY;
+    private static $_SALT;
 
     /**
      * @param string    $method    Request method
      */
-    public function __construct($method)
+    public function __construct($method, $password = null)
     {
         $this->_method    = $method;
         $this->_headers   = array();
-        $this->_binaries = array();
+        $this->_binaries  = array();
+        $this->_password  = $password;
 
         // Add default headers
         $this->setHeader("X-Sender", "Growler - PHP Growl notification library");
@@ -32,7 +37,15 @@ abstract class Request
 
     public function __toString()
     {
-        $message = "GNTP/1.0 " . $this->_method . " NONE\r\n";
+        // Message identifier
+        $message = "GNTP/1.0 " . $this->_method . " NONE";
+
+        if ($this->_password) {
+            $key      = Security\KeyManager::fromPassword($this->_password);
+            $message .= " " . $key->getAlgorithm() . ":" . $key->getHash() . "." . $key->getSalt();
+        }
+
+        $message .= "\r\n";
 
         // Headers
         foreach ($this->_headers as $name => $value) {
@@ -51,7 +64,7 @@ abstract class Request
         }
 
         $message .= "\r\n";
-
+        
         return $message;
     }
 

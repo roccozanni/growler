@@ -8,9 +8,9 @@ class Notify extends \Growler\Gntp\Request
      * @param Growl\Application     $application    The sender application
      * @param Growl\Notification    $notification   The notification instance
      */
-    public function __construct($application, $notification)
+    public function __construct($application, $notification, $password = null)
     {
-        parent::__construct("NOTIFY");
+        parent::__construct("NOTIFY", $password);
 
         $this->setHeader("Application-Name",   $application->getName());
         $this->setHeader("Notification-Name",  $notification->getType()->getName());

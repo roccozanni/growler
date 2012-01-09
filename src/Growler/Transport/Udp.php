@@ -5,6 +5,7 @@ namespace Growler\Transport;
 class Udp implements \Growler\Transport
 {
     private $_connection;
+    private $_password;
 
     /**
      * @param   Growler\Connection  $connection     The remote connection

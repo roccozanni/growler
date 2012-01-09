@@ -9,9 +9,9 @@ class Register extends \Growler\Gntp\Request
     /**
      * @param Growl\Application     $application    The sender application
      */
-    public function __construct($application)
+    public function __construct($application, $password = null)
     {
-        parent::__construct("REGISTER");
+        parent::__construct("REGISTER", $password);
         $this->setHeader("Application-Name", $application->getName());
 
         // Handle application icon
