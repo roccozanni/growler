@@ -44,22 +44,26 @@ From Growl 1.3 has been introduced the new TCP-based GNTP protocol.
 
 GNTP is a protocol to allow two-way communication between applications and centralized notification systems such as Growl for Mac OS X and to allow two-way communication between two machines running centralized notification systems for notification forwarding purposes.
 
-The GNTP procol implementation is NOT feature-complete yet.
+Missing GNTP features:
 
-Missing:
-
-- Message encryption
-- Subscribing and callbacks
+- Message encryption. In the current version of Growl (1.3.2), encryption is not supported yet. Is only defined in the protocol specification
+- Subscribing and callbacks.
 
 This is an example for creating a GNTP based transport:
 
     $connection  = new Growler\Connection("tcp", "localhost", 23053);
     $transport   = new Growler\Transport\Gntp($connection);
 
+Password protection
+-----
+
+Either the UDP and the GNTP protocols, support server password. Just add the password as the second parameter in transport creation:
+
+    $transport   = new Growler\Transport\Gntp($connection, "secret");
+
 Other TODOs
 -----
 
-- Logging
 - Error handling
 - A Facade for simpler use out-of-the-box
 

@@ -9,9 +9,6 @@ abstract class Request
     private $_binaries;
     private $_password;
 
-    private static $_KEY;
-    private static $_SALT;
-
     /**
      * @param string    $method    Request method
      */
